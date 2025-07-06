@@ -3,6 +3,19 @@ const { createElement } = require("react");
 const itemForm = document.getElementById("item-form");
 const itemInput = document.getElementById("item-input");
 const itemList = document.getElementById("item-list");
+const itemClear = document.getElementById("clear");
+
+function clearItem(e) {
+  while (itemList.firstChild) {
+    itemList.removeChild(firstChild);
+  }
+}
+
+function deleteItem(e) {
+  if (e.target.parentElement.classList.contains("remove-item")) {
+    e.target.parentElement.parentElement.remove();
+  }
+}
 
 function addItem(e) {
   e.preventDefault();
@@ -37,3 +50,7 @@ function createIcon(classes) {
   icon.className = classes;
   return icon;
 }
+
+itemForm.addEventListener("submit", addItem);
+itemList.addEventListener("click", deleteItem);
+itemClear.addEventListener("click", clearItem);
